@@ -23,36 +23,65 @@ class CreateLeadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'mobile_number' => [
-                'nullable', 'required_if:email,nullable', 'min:10', 'unique:leads,mobile_number',
-            ], 'email' => [
-                'nullable', 'required_if:mobile_number,nullable', 'unique:leads,email',
-            ], 'name' => [
-                'required', 'string', 'max:60',
-            ], 'phone_number' => [
-                'nullable', 'max:10',
-            ], 'lead_source' => [
+            'mobile_number'        => [
                 'nullable',
-            ], 'next_follow_up' => [
-                'nullable', 'date',
-            ], 'assigned_user_id' => [
-                'required', 'exists:users,id',
-            ], 'role_id' => [
+                'required_if:email,nullable',
+                'min:10',
+                'unique:leads,mobile_number',
+            ],
+            'email'                => [
+                'nullable',
+                'required_if:mobile_number,nullable',
+                'unique:leads,email',
+            ],
+            'name'                 => [
                 'required',
-            ], 'comment' => [
+                'string',
+                'max:60',
+            ],
+            'phone_number'         => [
+                'nullable',
+                'max:10',
+            ],
+            'lead_source'          => [
+                'nullable',
+            ],
+            'next_follow_up'       => [
+                'nullable',
+                'date',
+            ],
+            'assigned_user_id'     => [
+                'required',
+                'exists:users,id',
+            ],
+            'role_id'              => [
+                'required',
+            ],
+            'comment'              => [
                 'max:2000',
-            ], 'budget' => [
-                'nullable','decimal'
-            ], 'address' => [
+            ],
+            'budget'               => [
+                'nullable',
+                'decimal'
+            ],
+            'address'              => [
                 'array',
-            ], 'address.city' => [
-                'nullable', 'max:100',
-            ], 'address.address_line' => [
-                'nullable', 'max:200',
-            ], 'address.state' => [
-                'nullable', 'max:100',
-            ], 'address.zip_code' => [
-                'nullable', 'max:20',
+            ],
+            'address.city'         => [
+                'nullable',
+                'max:100',
+            ],
+            'address.address_line' => [
+                'nullable',
+                'max:200',
+            ],
+            'address.state'        => [
+                'nullable',
+                'max:100',
+            ],
+            'address.zip_code'     => [
+                'nullable',
+                'max:20',
             ],
         ];
     }

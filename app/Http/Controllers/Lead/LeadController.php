@@ -3,58 +3,47 @@
 namespace App\Http\Controllers\Lead;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreateLeadRequest;
+use App\Http\Requests\LeadRequest;
 use App\Models\Lead;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class LeadController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $this->authorize('viewAny', Lead::class);
+
+        return Lead::all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(CreateLeadRequest $request)
+    public function store(LeadRequest $request)
     {
-        if ($request->user()->cannot('create', Lead::class)) {
-            abort(403);
-        }
+        $this->authorize('create', Lead::class);
 
-        $lead = Lead::query()->create($request->validated());
-//        $lead->address()->create($request->input('address'));
-        return response([
-            'lead' => $lead,
-        ], Response::HTTP_OK);
+        return Lead::create($request->validated());
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Lead $lead)
     {
-        //
+        $this->authorize('view', $lead);
+
+        return $lead;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Lead $lead)
+    public function update(LeadRequest $request, Lead $lead)
     {
-        //
+        $this->authorize('update', $lead);
+
+        $lead->update($request->validated());
+
+        return $lead;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Lead $lead)
     {
-        //
+        $this->authorize('delete', $lead);
+
+        $lead->delete();
+
+        return response()->json();
     }
 }
