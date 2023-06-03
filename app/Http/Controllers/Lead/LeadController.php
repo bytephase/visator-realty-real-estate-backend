@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Lead;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateLeadRequest;
 use App\Models\Lead;
 use Illuminate\Http\Request;
