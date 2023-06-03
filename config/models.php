@@ -229,7 +229,9 @@ return [
         */
 
         'hidden' => [
-            '*secret*', '*password', '*token',
+            '*secret*',
+            '*password',
+            '*token',
         ],
 
         /*
@@ -372,7 +374,7 @@ return [
         |                       generates Post::user() and User::posts()
         */
 
-        'relation_name_strategy' => 'related',
+        'relation_name_strategy'  => 'related',
         // 'relation_name_strategy' => 'foreign_key',
 
         /*
@@ -403,7 +405,7 @@ return [
         | You can disable pluralization tables and relations
         |
         */
-        'pluralize' => true,
+        'pluralize'               => true,
 
         /*
         |--------------------------------------------------------------------------
@@ -413,7 +415,7 @@ return [
         | You can enable pluralization for certain tables
         |
         */
-        'override_pluralize_for' => [
+        'override_pluralize_for'  => [
 
         ],
         /*
@@ -424,7 +426,7 @@ return [
         | if you want the $fillable to be generated in base files
         |
         */
-        'fillable_in_base_files' => false,
+        'fillable_in_base_files'  => false,
 
         /*
         |--------------------------------------------------------------------------
@@ -436,7 +438,7 @@ return [
         | NOTE: This requires PHP 7.0 or later.
         |
         */
-        'enable_return_types' => false,
+        'enable_return_types'     => false,
     ],
 
     /*
@@ -493,18 +495,18 @@ return [
     |
     */
 
-//    'connections' => [
-//        'read_only_external' => [
-//            'parent' => \App\Models\ReadOnlyModel::class,
-//            'connection' => true,
-//            'users' => [
-//                'connection' => false,
-//            ],
-//            'my_other_database' => [
-//                'password_resets' => [
-//                    'connection' => false,
-//                ]
-//            ]
-//        ],
-//    ],
+    //    'connections' => [
+    //        'read_only_external' => [
+    //            'parent' => \App\Models\ReadOnlyModel::class,
+    //            'connection' => true,
+    //            'users' => [
+    //                'connection' => false,
+    //            ],
+    //            'my_other_database' => [
+    //                'password_resets' => [
+    //                    'connection' => false,
+    //                ]
+    //            ]
+    //        ],
+    //    ],
 ];

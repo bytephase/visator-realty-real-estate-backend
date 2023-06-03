@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Lead\LeadController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->prefix('api')->group(function (){
-    Route::get('/user', function (Request $request){
+Route::middleware([])->group(function () {
+    Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::resource('leads', LeadController::class);
 });

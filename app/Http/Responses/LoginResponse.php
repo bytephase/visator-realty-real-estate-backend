@@ -2,15 +2,15 @@
 
 namespace App\Http\Responses;
 
-use Illuminate\Http\Request;
 use App\Http\Resources\LoginResource;
+use Illuminate\Http\Request;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 
 class LoginResponse implements LoginResponseContract
 {
     /**
      * Create an HTTP response that represents the object.
-     * @param  Request  $request
+     * @param Request $request
      * @return LoginResource
      */
     public function toResponse($request): LoginResource
